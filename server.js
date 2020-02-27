@@ -41,7 +41,7 @@ const donors = [
 ]*/
 
 server.get("/", function(req, res){
-    db.query(`SELECT * FROM public."Doadores"`, function(err, result){
+    db.query(`SELECT * FROM public."Doadores" order by "id" desc limit 4`, function(err, result){
         if (err) return res.send("Erro de banco ARGH")
         const donors = result.rows
         return res.render("index.html", { donors })
